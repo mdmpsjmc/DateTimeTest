@@ -1,0 +1,19 @@
+﻿@model IQueryable<Patient>
+
+@{ 
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        <h4 class="display-4">Welcome to DateTimeTest</h4>
+
+        @foreach (var p in Model)
+        {
+            <div class="row m-1 p-1">
+                @p.RM2Number,
+                @p.FirstName,
+                @p.LastName,
+                @p.DOB
+            </div>
+        }
+    </div>

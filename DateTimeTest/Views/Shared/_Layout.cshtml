@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DateTimeTest</title>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @RenderSection("Styles",required:false)
+
+    <!-- Theme Style -->
+    <link href="~/lib/admin-lte/css/adminlte.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand ml-2">DateTime Tester</span>
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            Do Something useful
+        </div>
+
+        <div class="col-9">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/admin-lte/js/adminlte.min.js"></script>
+    @RenderSection("Scripts", required: false);
+    </body>
+</html>
