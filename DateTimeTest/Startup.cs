@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using DateTimeTest.Models;
 using DateTimeTest.Data;
+using AutoMapper;
 
 namespace DateTimeTest
 {
@@ -34,6 +35,7 @@ namespace DateTimeTest
             });
             services.AddControllersWithViews();
             services.AddScoped<IPatientRepository, EFPatientRepository>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +57,7 @@ namespace DateTimeTest
             {
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Patients}/{action=Index}/{id?}");
                 endpoints.MapControllers();
             });
 

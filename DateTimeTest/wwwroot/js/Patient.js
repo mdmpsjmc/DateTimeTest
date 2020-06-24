@@ -43,7 +43,8 @@
         "initComplete": function (settings, json) {
             addFilteringColumns();
             moveSearchFieldsFromFooterToHead();
-
+            showDetailsPatientsModal();
+            showEditPatientsModal();
         },
         "ajax": {
             "url": $("table#patients-datatable").data("url"),
@@ -53,6 +54,7 @@
         "columns": [
             { "data": "id", "name": "PatientID", "autowidth": true },
             { "data": "rM2Number", "name": "RM2Number", "autowidth": true },
+            { "data": "nhsNumber", "name": "NHSNumber", "autowidth": true },
             { "data": "lastName", "name": "LastName", "autowidth": true },
             { "data": "firstName", "name": "FirstName", "autowidth": true },
             {
@@ -63,6 +65,7 @@
                     return date;
                 }
             },
+            { "data": "gender", "name": "Gender", "autowidth": true },
             {
                 "render": function (data, type, object, meta) {
                     //buttons can be render here with HTML
@@ -77,8 +80,63 @@
         ]
         });
     };
+
+    var initPatientModal = function () {
+
+    };
+
+    var showDetailsPatientsModal = function () {
+        $(document).off("click.dpm").on("click.dpm", "a.details-patient-link", function (e) {
+            e.preventDefault();
+            let patientID = $(this).data("patientID");
+            let detailsUrl = $(this).attr("href");
+            $.get(detailsUrl, function (htmlResponse) {
+                $("div#modal-container").html(htmlResponse);
+                $("div#details-patient-modal").modal("show");
+            });
+        });
+    };
+
+    var showEditPatientsModal = function () {
+        $(document).off("click.epm").on("click.epm", "a.edit-patient-link", function (e) {
+            e.preventDefault();
+            let patientID = $(this).data("patientID");
+            let editUrl = $(this).attr("href");
+            $.get(editUrl, function (htmlResponse) {
+                $("div#modal-container").html(htmlResponse);
+                $("div#edit-patient-modal").modal("show");
+                $("div#edit-patient-modal").on("shown.bs.modal", function () {
+                    $("input.datepicker").datepicker({
+                        format: "dd/MM/yyyy"
+                    });
+                    onPatientUpdateSubmit();
+                });
+            });
+        });
+    };
+
+    var onPatientUpdateSubmit =function() {
+        $(document).off("click.sup").on("click.sup", "button#save-update-patient", function (e) {
+            e.preventDefault();
+            $("label.text-danger").html("");
+            let initialRm2 = $("input#RM2Number").val().trim();
+            let formData = $("form#edit-patient").serialize();
+            let formAction = "/Patients/Update";
+            $.post(formAction, formData, function (response) {
+                if (response.errors) {
+                    displayErrors(response.errors);
+                } else {
+                    window.patientsTable.ajax.reload();
+                    $("div#edit-patient-modal").modal.hide;
+                    $("input.RM2Number").val(initialRm2).trigger("change");
+                }
+            });
+        });
+    };
+
     return {
         init: function () {
+            initPatientModal();
             initializePatientsTable();
         }
     };

@@ -1,0 +1,22 @@
+﻿@model DateTimeTest.Models.ViewModels.PatientViewModel
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <h1>
+                    @(Model.Patient.FirstName)<span class="semi-bold" style="color:darkblue">@(Model.Patient.LastName)</span>
+                    <br>
+                    <small><strong>@Model.Patient.RM2Number</strong></small>
+                </h1>
+                <ul class="list-unstyled">
+                    <li>
+                        @if (Model.Patient.DOB.HasValue)
+                        {
+                            <p class="text-muted">
+                                <i class="fa fa-birthday-cake"></i>&nbsp;&nbsp;<span class="txt-color-darken">@(Model.Patient.DOB.ToString())</span>
+                            </p>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

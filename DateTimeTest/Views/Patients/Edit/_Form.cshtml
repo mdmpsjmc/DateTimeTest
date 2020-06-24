@@ -1,0 +1,43 @@
+﻿@model DateTimeTest.Models.Patient
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>First Name</label>
+                <input asp-for="FirstName" type="text" class="form-control" placeholder="Enter First Name..." />
+                <span asp-validation-for="FirstName"></span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Last Name</label>
+                <input asp-for="LastName" type="text" class="form-control" placeholder="Enter Last Name..." />
+                <span asp-validation-for="LastName"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>RM2Number</label>
+                <input asp-for="RM2Number" type="text" class="form-control" placeholder="Enter RM2 Number..." />
+                <span asp-validation-for="RM2Number"></span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>NHSNumber</label>
+                <input asp-for="NHSNumber" type="text" class="form-control" placeholder="Enter NHS Number..." />
+                <span asp-validation-for="NHSNumber"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>DOB</label>
+                <input asp-for="DOB" type="text" class="form-control datepicker" placeholder="Enter DOBr..." />
+                <span asp-validation-for="DOB"></span>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,40 @@
+﻿@model DateTimeTest.Models.Patient
+
+<div class="modal modal-patient fade" role="dialog" id="edit-patient-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body form">
+                <ul class="nav nav-pills">
+                    <li class=" nav-item active">
+                        <a class="nav-link active" data-toggle="pill" href="#demo">Demographics</a>
+                    </li>
+                    <li class=" nav-item active">
+                        <a class="nav-link active" data-toggle="pill" href="#address">Address</a>
+                    </li>
+                    <li class=" nav-item active">
+                        <a class="nav-link active" data-toggle="pill" href="contact">Contact</a>
+                    </li>
+                </ul>
+                <form id="edit-patient" action="Patients/Update" method="POST">
+                    @Html.Hidden("PatientID",Model.PatientID)
+                    <div class="tab-content" style="max-width: 400px">
+                        <div class="tab-pane container active" id="demo" style="width:860px">
+                            <partial name="/Views/Patients/Edit/_Form.cshtml" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="save-update-patient">Save Changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Changes</button>
+            </div>
+        </div>
+    </div>
+
+</div>

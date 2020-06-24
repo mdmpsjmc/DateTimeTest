@@ -13,10 +13,12 @@ namespace DateTimeTest.Migrations
                 {
                     PatientID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RM2Number = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    DOB = table.Column<DateTime>(nullable: false)
+                    RM2Number = table.Column<string>(maxLength: 12, nullable: true),
+                    NHSNumber = table.Column<string>(maxLength: 12, nullable: true),
+                    LastName = table.Column<string>(maxLength: 50, nullable: true),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
+                    DOB = table.Column<DateTime>(nullable: true),
+                    Gender = table.Column<string>(maxLength: 1, nullable: true)
                 },
                 constraints: table =>
                 {

@@ -40,9 +40,11 @@ namespace DateTimeTest.Controllers.DataTables
                     {
                         ID = patient.PatientID,
                         RM2Number = patient.RM2Number,
+                        NHSNumber=patient.NHSNumber,
                         LastName=patient.LastName,
                         FirstName=patient.FirstName,
-                        DOB=DateHelper.DateTimeToUnixTimestamp(patient.DOB)
+                        DOB=DateHelper.DateTimeToUnixTimestamp(patient.DOB),
+                        Gender=patient.Gender
                     });
             }
 

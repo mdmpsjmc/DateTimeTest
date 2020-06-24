@@ -2,10 +2,12 @@
 
 @section Styles{
     <link href="~/lib/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 }
 
 @section Scripts{
     <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script src="~/lib/datatables/js/dataTables.bootstrap.min.js"></script>
     <script src="~/lib/moment.js/moment.min.js"></script>
     <script src="~/js/Patient.js"></script>
@@ -37,9 +39,11 @@
                             <tr>
                                 <th>ID</th>
                                 <th>RM2Number</th>
+                                <th>NHSNumber</th>
                                 <th>Last Name</th>
                                 <th>First Name</th>
                                 <th>DOB</th>
+                                <th>Gender</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -48,9 +52,11 @@
                             <tr>
                                 <th>ID</th>
                                 <th>RM2Number</th>
+                                <th>NHSNumber</th>
                                 <th>Last Name</th>
                                 <th>First Name</th>
                                 <th>DOB</th>
+                                <th>Gender</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
@@ -61,3 +67,4 @@
         </div>
     </div>
 </section>
+<div id="modal-container"></div>
